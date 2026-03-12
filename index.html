@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Grow Up — Coming Soon</title>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@300;400;700;900&family=Barlow:ital,wght@0,300;0,400;1,300&display=swap" rel="stylesheet">
+<style>
+* { margin:0; padding:0; box-sizing:border-box; }
+:root { --ink:#151812; --linen:#EDE8DF; --acid:#C8E04A; --mid:#7A7870; --rule:rgba(21,24,18,0.1); }
+html,body { background:var(--linen); font-family:'Barlow Condensed',sans-serif; color:var(--ink); overflow-x:hidden; }
+body::after { content:''; position:fixed; inset:0; background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E"); pointer-events:none; z-index:999; opacity:0.55; }
+
+/* ── TOPBAR ── */
+.topbar { display:flex; justify-content:space-between; align-items:center; padding:18px 40px; border-bottom:1.5px solid var(--ink); }
+.tl { font-size:15px; font-weight:900; text-transform:uppercase; letter-spacing:-0.01em; }
+.tl em { color:var(--acid); font-style:normal; }
+.tc { background:var(--acid); padding:5px 16px 6px; font-size:11px; font-weight:700; letter-spacing:0.22em; text-transform:uppercase; color:var(--ink); }
+.tr { font-family:'Barlow',sans-serif; font-size:12px; font-weight:300; color:var(--mid); letter-spacing:0.04em; }
+
+/* ── TICKER ── */
+.ticker { border-bottom:1.5px solid var(--ink); background:var(--acid); overflow:hidden; white-space:nowrap; padding:11px 0; }
+.ticker-i { display:inline-block; animation:tick 28s linear infinite; }
+.ticker-i span { font-size:11px; font-weight:700; letter-spacing:0.2em; text-transform:uppercase; color:var(--ink); padding:0 28px; opacity:0.45; }
+.ticker-i span.loud { opacity:1; }
+.ticker-i span.loud::before { content:'· '; opacity:0.35; }
+@keyframes tick { from{transform:translateX(0)} to{transform:translateX(-50%)} }
+
+/* ── MAIN GRID ── */
+.page { display:grid; grid-template-columns:55% 45%; min-height:calc(100vh - 96px); }
+
+/* ── LEFT ── */
+.left { border-right:1.5px solid var(--ink); display:flex; flex-direction:column; justify-content:space-between; padding:56px 52px 52px; position:relative; overflow:hidden; animation:rise 0.5s ease both; }
+.ghost { position:absolute; font-size:560px; font-weight:900; color:rgba(21,24,18,0.04); line-height:1; top:-50px; left:-30px; pointer-events:none; user-select:none; letter-spacing:-0.05em; }
+.eyebrow { font-size:12px; letter-spacing:0.22em; text-transform:uppercase; color:var(--mid); font-weight:400; position:relative; z-index:2; }
+
+/* Headline */
+.hl { position:relative; z-index:2; margin-top:20px; }
+.hl-grow { display:block; font-size:clamp(148px,17vw,188px); font-weight:900; text-transform:uppercase; letter-spacing:-0.045em; line-height:0.82; color:var(--ink); margin-right:-24px; overflow:hidden; white-space:nowrap; }
+.hl-up { display:block; font-size:clamp(185px,22vw,240px); font-weight:900; text-transform:uppercase; letter-spacing:-0.055em; line-height:0.76; color:var(--acid); margin-left:-5px; margin-right:-60px; overflow:hidden; white-space:nowrap; }
+.hl-period { color:var(--ink); font-size:0.88em; }
+
+/* Bottom copy */
+.bottom { position:relative; z-index:2; padding-top:32px; }
+.dl-head { font-size:36px; font-weight:900; text-transform:uppercase; letter-spacing:-0.02em; line-height:1.0; border-top:1.5px solid var(--ink); padding-top:22px; }
+.dl-head em { font-style:normal; color:var(--acid); }
+.dl-body { font-family:'Barlow',sans-serif; font-size:16px; font-weight:300; line-height:1.75; color:var(--mid); margin-top:14px; max-width:400px; }
+
+/* Proof points */
+.proof { display:flex; flex-direction:column; margin-top:24px; border-top:1px solid var(--rule); }
+.proof-item { display:flex; align-items:center; gap:12px; padding:12px 0; border-bottom:1px solid var(--rule); }
+.proof-arrow { color:var(--acid); font-size:14px; font-weight:700; flex-shrink:0; }
+.proof-text { font-size:13px; font-weight:700; letter-spacing:0.12em; text-transform:uppercase; color:var(--mid); }
+
+/* ── RIGHT — ink ── */
+.right { background:var(--ink); display:flex; flex-direction:column; justify-content:space-between; padding:56px 52px 52px; position:relative; overflow:hidden; animation:rise 0.5s ease 0.1s both; }
+.r-ghost { position:absolute; font-size:380px; font-weight:900; color:rgba(255,255,255,0.025); line-height:1; bottom:-40px; right:-30px; pointer-events:none; user-select:none; letter-spacing:-0.05em; }
+.r-vert { position:absolute; left:0; top:0; bottom:0; width:22px; display:flex; align-items:center; justify-content:center; writing-mode:vertical-rl; font-size:8px; font-weight:700; letter-spacing:0.25em; text-transform:uppercase; color:rgba(255,255,255,0.05); border-right:1px solid rgba(255,255,255,0.05); font-family:'Barlow',sans-serif; }
+.r-eyebrow { font-size:12px; letter-spacing:0.22em; text-transform:uppercase; color:rgba(255,255,255,0.2); font-weight:400; position:relative; z-index:2; padding-left:26px; }
+
+/* Bags */
+.bags { display:flex; justify-content:center; align-items:flex-end; position:relative; z-index:2; flex:1; padding:28px 0; min-height:240px; }
+.bag { width:148px; height:222px; position:relative; flex-shrink:0; }
+.bag-foil { position:absolute; inset:0; border-radius:9px 9px 18px 18px; background:linear-gradient(118deg,rgba(255,255,255,0) 0%,rgba(255,255,255,0.18) 17%,rgba(255,255,255,0) 22%,rgba(255,255,255,0) 100%),linear-gradient(108deg,#e0dfd8 0%,#c4c3bc 8%,#dddcd5 16%,#b0afa8 24%,#d8d7d0 32%,#bcbbb4 40%,#e2e1da 52%,#b8b7b0 60%,#d5d4cd 70%,#c5c4bd 80%,#dddcd5 90%,#c2c1ba 100%); box-shadow:5px 5px 0 var(--acid),0 24px 56px rgba(0,0,0,0.45),inset 1px 0 2px rgba(255,255,255,0.6),inset -2px 0 4px rgba(0,0,0,0.08); }
+.bag-foil::after { content:''; position:absolute; inset:0; border-radius:inherit; background:repeating-linear-gradient(97deg,rgba(255,255,255,0.04) 0px,rgba(0,0,0,0.025) 1px,transparent 2px,transparent 5px); pointer-events:none; }
+.bag-seal { position:absolute; top:0; left:0; right:0; height:22px; background:linear-gradient(180deg,#8a8980 0%,#a8a79f 100%); border-radius:9px 9px 0 0; border-bottom:1.5px solid rgba(0,0,0,0.15); z-index:3; overflow:hidden; }
+.bag-seal::after { content:''; position:absolute; inset:0; background:repeating-linear-gradient(90deg,rgba(255,255,255,0.07) 0,rgba(255,255,255,0.07) 1px,transparent 1px,transparent 4px); }
+.bag-gusset { position:absolute; bottom:0; left:0; right:0; height:24px; background:linear-gradient(0deg,#888780 0%,#a4a39c 100%); border-radius:0 0 18px 18px; border-top:1.5px solid rgba(0,0,0,0.12); z-index:3; }
+.bag-label { position:absolute; bottom:30px; left:11px; right:11px; background:var(--ink); z-index:5; border-top:3px solid var(--acid); padding:10px 13px 13px; }
+.bl-spec { display:flex; justify-content:space-between; margin-bottom:5px; }
+.bl-spec-l { font-family:'Barlow',sans-serif; font-size:7px; font-weight:600; letter-spacing:0.2em; text-transform:uppercase; color:rgba(238,234,226,0.2); }
+.bl-spec-r { font-size:7px; font-weight:700; color:var(--acid); }
+.bl-grow { display:block; font-size:36px; font-weight:900; color:var(--linen); line-height:0.80; letter-spacing:-0.02em; text-transform:uppercase; }
+.bl-up { display:block; font-size:36px; font-weight:900; color:var(--acid); line-height:0.80; letter-spacing:-0.02em; text-transform:uppercase; }
+.bl-foot { margin-top:6px; padding-top:5px; border-top:1px solid rgba(255,255,255,0.07); display:flex; justify-content:space-between; align-items:baseline; }
+.bl-flav { font-family:'Barlow',sans-serif; font-style:italic; font-size:9px; font-weight:300; color:rgba(255,255,255,0.25); }
+.bl-wt { font-size:9px; font-weight:700; color:var(--acid); }
+.bag-label.light { background:var(--linen); border-color:var(--ink); }
+.bag-label.light .bl-grow { color:var(--ink); }
+.bag-label.light .bl-up { color:var(--acid); }
+.bag-label.light .bl-spec-l { color:rgba(21,24,18,0.25); }
+.bag-label.light .bl-spec-r { color:var(--ink); opacity:0.5; }
+.bag-label.light .bl-flav { color:rgba(21,24,18,0.3); }
+.bag-label.light .bl-wt { color:var(--ink); opacity:0.4; }
+.bag-label.light .bl-foot { border-color:rgba(21,24,18,0.07); }
+
+/* ── FORM ── */
+.form-area { position:relative; z-index:2; padding-left:26px; }
+.form-head { font-size:34px; font-weight:900; text-transform:uppercase; letter-spacing:-0.02em; line-height:1.0; color:var(--linen); margin-bottom:12px; }
+.form-head em { color:var(--acid); font-style:normal; }
+.form-body { font-family:'Barlow',sans-serif; font-size:15px; font-weight:300; line-height:1.7; color:rgba(255,255,255,0.4); margin-bottom:20px; }
+.email-row { display:flex; border:1.5px solid rgba(255,255,255,0.1); background:rgba(255,255,255,0.04); transition:border-color 0.15s; }
+.email-row:focus-within { border-color:var(--acid); }
+.email-input { flex:1; background:transparent; border:none; outline:none; padding:15px 18px; font-family:'Barlow',sans-serif; font-size:14px; font-weight:300; color:var(--linen); letter-spacing:0.02em; }
+.email-input::placeholder { color:rgba(255,255,255,0.2); }
+.email-btn { background:var(--acid); border:none; padding:0 24px; font-family:'Barlow Condensed',sans-serif; font-size:12px; font-weight:700; letter-spacing:0.22em; text-transform:uppercase; color:var(--ink); cursor:pointer; transition:background 0.12s; white-space:nowrap; flex-shrink:0; }
+.email-btn:hover { background:#d4ed4f; }
+.email-btn:active { transform:scale(0.98); }
+.form-fine { font-family:'Barlow',sans-serif; font-size:12px; font-weight:300; color:rgba(255,255,255,0.18); margin-top:10px; line-height:1.5; }
+.success { display:none; border:1.5px solid var(--acid); padding:18px 22px; background:rgba(200,224,74,0.06); }
+.success.show { display:block; }
+.success-head { font-size:16px; font-weight:700; text-transform:uppercase; letter-spacing:0.08em; color:var(--acid); }
+.success-body { font-family:'Barlow',sans-serif; font-size:13px; color:rgba(255,255,255,0.3); display:block; margin-top:5px; }
+.counter { display:flex; align-items:center; gap:14px; margin-top:20px; padding-top:20px; border-top:1px solid rgba(255,255,255,0.07); }
+.counter-n { font-size:40px; font-weight:900; color:var(--linen); letter-spacing:-0.03em; line-height:1; }
+.counter-l { font-size:12px; font-weight:700; letter-spacing:0.16em; text-transform:uppercase; color:rgba(255,255,255,0.2); line-height:1.55; }
+
+/* ── VALUES ── */
+.vals { border-top:1.5px solid var(--ink); border-bottom:1.5px solid var(--ink); display:grid; grid-template-columns:repeat(3,1fr); }
+.val { padding:36px 36px; border-right:1.5px solid var(--ink); position:relative; }
+.val:last-child { border-right:none; }
+.val-num { position:absolute; top:24px; right:24px; font-size:56px; font-weight:900; color:rgba(21,24,18,0.05); line-height:1; letter-spacing:-0.04em; }
+.val-head { font-size:14px; font-weight:700; letter-spacing:0.16em; text-transform:uppercase; color:var(--ink); margin-bottom:12px; display:flex; align-items:center; gap:8px; }
+.val-head::before { content:'→'; color:var(--acid); }
+.val-body { font-family:'Barlow',sans-serif; font-size:15px; font-weight:300; line-height:1.75; color:var(--mid); }
+.val-body em { font-style:normal; font-weight:600; color:var(--ink); }
+
+/* ── POSTER BAND ── */
+.poster-band { background:var(--acid); padding:44px 52px; display:flex; align-items:center; justify-content:space-between; border-bottom:1.5px solid var(--ink); position:relative; overflow:hidden; gap:48px; }
+.pb-ghost { position:absolute; font-size:280px; font-weight:900; text-transform:uppercase; color:rgba(21,24,18,0.05); line-height:1; top:-30px; right:-20px; letter-spacing:-0.06em; pointer-events:none; user-select:none; }
+.pb-copy { font-size:clamp(40px,5vw,64px); font-weight:900; text-transform:uppercase; color:var(--ink); line-height:0.85; letter-spacing:-0.04em; flex:1; position:relative; z-index:2; }
+.pb-copy .fade { opacity:0.2; }
+.pb-divider { width:1.5px; height:88px; background:rgba(21,24,18,0.15); flex-shrink:0; }
+.pb-right { position:relative; z-index:2; flex-shrink:0; max-width:280px; }
+.pb-italic { font-family:'Barlow',sans-serif; font-style:italic; font-size:18px; font-weight:300; color:rgba(21,24,18,0.6); line-height:1.65; }
+.pb-tag { font-size:12px; font-weight:700; letter-spacing:0.2em; text-transform:uppercase; color:rgba(21,24,18,0.4); margin-top:16px; font-family:'Barlow',sans-serif; display:flex; align-items:center; gap:8px; }
+.pb-tag::before { content:'→'; color:var(--ink); }
+
+/* ── PURPOSE — prominent ── */
+.purpose {
+  background:var(--ink);
+  padding:56px 52px;
+  display:grid;
+  grid-template-columns:auto 1fr;
+  gap:56px;
+  align-items:start;
+  border-bottom:3px solid var(--acid);
+}
+.purpose-label {
+  font-size:11px; font-weight:700;
+  letter-spacing:0.25em; text-transform:uppercase;
+  color:var(--acid); white-space:nowrap;
+  padding-top:6px;
+  border-top:1.5px solid rgba(200,224,74,0.3);
+  padding-top:14px;
+}
+.purpose-inner { display:flex; flex-direction:column; gap:16px; }
+.purpose-headline {
+  font-size:clamp(32px,4vw,48px); font-weight:900;
+  text-transform:uppercase; letter-spacing:-0.03em; line-height:0.9;
+  color:var(--linen);
+}
+.purpose-headline em { color:var(--acid); font-style:normal; }
+.purpose-copy {
+  font-family:'Barlow',sans-serif;
+  font-size:17px; font-weight:300; line-height:1.75;
+  color:rgba(255,255,255,0.55);
+  max-width:640px;
+}
+.purpose-copy em { font-style:normal; color:rgba(255,255,255,0.9); }
+
+/* ── FOOTER ── */
+.footer { padding:20px 40px; display:flex; justify-content:space-between; align-items:center; border-top:1.5px solid var(--ink); }
+.footer-mark { font-size:15px; font-weight:900; text-transform:uppercase; letter-spacing:-0.01em; }
+.footer-mark em { color:var(--acid); font-style:normal; }
+.footer-r { font-family:'Barlow',sans-serif; font-size:13px; font-weight:300; color:var(--mid); }
+
+@keyframes rise { from{opacity:0;transform:translateY(18px)} to{opacity:1;transform:translateY(0)} }
+
+@media(max-width:900px){
+  .page{grid-template-columns:1fr}
+  .left{border-right:none;border-bottom:1.5px solid var(--ink);padding:36px 24px 32px}
+  .right{padding:36px 24px 40px}
+  .hl-grow{font-size:100px}
+  .hl-up{font-size:128px}
+  .ghost{font-size:300px}
+  .topbar{padding:14px 20px}
+  .tr{display:none}
+  .vals{grid-template-columns:1fr}
+  .val{border-right:none;border-bottom:1.5px solid var(--ink)}
+  .purpose{grid-template-columns:1fr;gap:24px;padding:40px 24px}
+  .poster-band{flex-direction:column;gap:24px;padding:36px 24px}
+  .pb-divider{width:40px;height:1.5px}
+  .r-vert{display:none}
+}
+</style>
+</head>
+<body>
+
+<div class="topbar">
+  <div class="tl">Grow <em>Up.</em></div>
+  <div class="tc">Coming Soon</div>
+  <div class="tr">Protein for people who train — and act like adults</div>
+</div>
+
+<div class="ticker">
+  <div class="ticker-i">
+    <span class="loud">Lift heavy. Call your mum.</span><span>Grass-fed WPI</span>
+    <span class="loud">Do dropsets. Do the dishes.</span><span>Simple ingredients</span>
+    
+    <span class="loud">Gym done. Life next.</span><span>Transparently sourced</span>
+    <span class="loud">Muscles optional. Being decent isn't.</span><span>Fair price</span>
+    <span class="loud">Train hard. Then help your mate move.</span><span>Locally sourced</span>
+    <span class="loud">Protein. Not a personality.</span><span>Simple ingredients</span>
+    <span class="loud">Strong for life.</span><span>No influencer formulas</span>
+    <span class="loud">Lift heavy. Call your mum.</span><span>Grass-fed WPI</span>
+    <span class="loud">Do dropsets. Do the dishes.</span><span>Simple ingredients</span>
+    
+    <span class="loud">Gym done. Life next.</span><span>Transparently sourced</span>
+    <span class="loud">Muscles optional. Being decent isn't.</span><span>Fair price</span>
+    <span class="loud">Train hard. Then help your mate move.</span><span>Locally sourced</span>
+    <span class="loud">Protein. Not a personality.</span><span>Simple ingredients</span>
+    <span class="loud">Strong for life.</span><span>No influencer formulas</span>
+  </div>
+</div>
+
+<div class="page">
+  <div class="left">
+    <div class="ghost">G</div>
+    <div class="eyebrow">Performance nutrition — adults who train</div>
+    <div class="hl">
+      <span class="hl-grow">GROW</span>
+      <span class="hl-up">UP<span class="hl-period">.</span></span>
+    </div>
+    <div class="bottom">
+      <div class="dl-head">Train because it<br>keeps you <em>capable.</em></div>
+      <div class="dl-body">Not chasing a physique. Not chasing an identity. Just showing up, doing the work, being useful to the people around you. Grow Up is protein for that person. Grass-fed whey, simple ingredients, no influencer formulas, fair price.</div>
+      <div class="proof">
+        <div class="proof-item"><span class="proof-arrow">→</span><span class="proof-text">Grass-fed WPI · locally sourced</span></div>
+        <div class="proof-item"><span class="proof-arrow">→</span><span class="proof-text">Simple ingredients · No fillers</span></div>
+        <div class="proof-item"><span class="proof-arrow">→</span><span class="proof-text">No influencer tax · Fair price</span></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="right">
+    <div class="r-ghost">UP</div>
+    <div class="r-vert">WHEY PROTEIN ISOLATE · GRASS FED · NATURAL INGREDIENTS</div>
+    <div class="r-eyebrow">Starter Range — 2025</div>
+
+    <div class="bags">
+      <div class="bag" style="transform:rotate(-3deg);z-index:2;">
+        <div class="bag-foil"></div><div class="bag-seal"></div><div class="bag-gusset"></div>
+        <div class="bag-label">
+          <div class="bl-spec"><span class="bl-spec-l">WPI · 1KG</span><span class="bl-spec-r">→</span></div>
+          <span class="bl-grow">GROW</span><span class="bl-up">UP.</span>
+          <div class="bl-foot"><span class="bl-flav">Natural Chocolate</span><span class="bl-wt">1KG</span></div>
+        </div>
+      </div>
+      <div class="bag" style="transform:rotate(5deg);opacity:0.65;z-index:1;position:absolute;right:32px;bottom:28px;">
+        <div class="bag-foil" style="background:linear-gradient(118deg,rgba(255,255,255,0) 0%,rgba(255,255,255,0.16) 16%,rgba(255,255,255,0) 21%,rgba(255,255,255,0) 100%),linear-gradient(95deg,#d0cfc8 0%,#e4e3dc 12%,#babab2 22%,#d8d7d0 34%,#c4c3bc 46%,#dcdbd4 58%,#b8b7b0 68%,#e0dfd8 80%,#c8c7c0 90%,#d4d3cc 100%);"></div>
+        <div class="bag-seal"></div><div class="bag-gusset"></div>
+        <div class="bag-label light">
+          <div class="bl-spec"><span class="bl-spec-l">WPI · 1KG</span><span class="bl-spec-r">→</span></div>
+          <span class="bl-grow">GROW</span><span class="bl-up">UP.</span>
+          <div class="bl-foot"><span class="bl-flav">Natural Vanilla</span><span class="bl-wt">1KG</span></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="form-area">
+      <div class="form-head">Get in early.<br><em>We'll remember you.</em></div>
+      <div class="form-body">Launching later this year. Leave your email and you'll hear first — plus a launch discount for people who were paying attention before it was cool. Which, honestly, is the whole point.</div>
+      <div id="form-wrap">
+        <div class="email-row">
+          <input class="email-input" type="email" id="email-input" placeholder="your@email.com" autocomplete="email">
+          <button class="email-btn" onclick="handleSubmit()">Notify Me</button>
+        </div>
+        <div class="form-fine">No spam. One email when we launch. Unsubscribe anytime.</div>
+      </div>
+      <div class="success" id="success">
+        <div class="success-head">Noted. You're in.</div>
+        <span class="success-body">We'll send one email when we launch. Not seventeen. Just one. Good choice.</span>
+      </div>
+      <div class="counter">
+        <div class="counter-n" id="counter">247</div>
+        <div class="counter-l">People already<br>on the list</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="vals">
+  <div class="val">
+    <div class="val-num">01</div>
+    <div class="val-head">What it is</div>
+    <div class="val-body">High quality <em>grass-fed, locally sourced whey protein.</em> Simple, transparent ingredients. No proprietary blends. No filler. No mystery. Just reliable protein that works as hard as you do — and costs what it should.</div>
+  </div>
+  <div class="val">
+    <div class="val-num">02</div>
+    <div class="val-head">What it isn't</div>
+    <div class="val-body">Not a bodybuilder rage brand. Not a clinical white-label tub with a serif font and nothing to say. Not another influencer formula with a 47-ingredient label and a guy with no shirt on. <em>Not a personality.</em> Just good protein, honestly made.</div>
+  </div>
+  <div class="val">
+    <div class="val-num">03</div>
+    <div class="val-head">Who it's for</div>
+    <div class="val-body">You train 3–5 times a week. Gym, running, sport, whatever. You take it seriously without being weird about it. You're not optimising — <em>you're just consistent.</em> That's the whole thing, really.</div>
+  </div>
+</div>
+
+<div class="poster-band">
+  <div class="pb-ghost">G</div>
+  <div class="pb-copy">STRONG<br>GLUTES.<br><span class="fade">STRONG</span><br><span class="fade">CHARACTER.</span></div>
+  <div class="pb-divider"></div>
+  <div class="pb-right">
+    <div class="pb-italic">"Protein for people who want to be dangerous in the gym — and decent everywhere else."</div>
+    <div class="pb-tag">Grow Up — Strong for life</div>
+  </div>
+</div>
+
+<div class="purpose">
+  <div class="purpose-label">Purpose</div>
+  <div class="purpose-inner">
+    <div class="purpose-headline">Strong for<br><em>the next generation.</em></div>
+    <div class="purpose-copy">A portion of every sale funds programs connecting boys and young men with <em>coaches, mentors and positive male role models.</em> Grow Up supports youth mentorship through sport — because strong communities matter more than strong quads. (Though quads help.)</div>
+  </div>
+</div>
+
+<div class="footer">
+  <div class="footer-mark">Grow <em>Up.</em></div>
+  <div class="footer-r">Sydney, Australia — Protein for people who train and act like it</div>
+</div>
+
+<script>
+function handleSubmit(){
+  var email=document.getElementById('email-input').value.trim();
+  if(!email||!email.includes('@')||!email.includes('.')){
+    var row=document.querySelector('.email-row');
+    row.style.borderColor='rgba(255,80,80,0.6)';
+    setTimeout(function(){row.style.borderColor=''},1200);
+    document.getElementById('email-input').focus();
+    return;
+  }
+  document.getElementById('form-wrap').style.display='none';
+  document.getElementById('success').classList.add('show');
+  var el=document.getElementById('counter'),n=247;
+  var t=setInterval(function(){n++;el.textContent=n;if(n>=248)clearInterval(t);},80);
+}
+document.getElementById('email-input').addEventListener('keydown',function(e){if(e.key==='Enter')handleSubmit();});
+</script>
+</body>
+</html>
