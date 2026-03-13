@@ -11,7 +11,7 @@ export default async function handler(req, res) {
 
   try {
     const response = await fetch(
-      `https://app.kit.com/forms/${process.env.KIT_FORM_ID}/subscriptions`,
+      `https://api.convertkit.com/v3/forms/${process.env.KIT_FORM_ID}/subscribe`,
       {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
@@ -23,7 +23,7 @@ export default async function handler(req, res) {
     );
 
     const data = await response.json();
-    return res.status(response.status).json(data);
+    return res.status(response.ok ? 200 : 400).json(data);
 
   } catch (err) {
     return res.status(500).json({ error: err.message });
