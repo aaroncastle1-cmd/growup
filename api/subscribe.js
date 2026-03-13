@@ -11,14 +11,14 @@ export default async function handler(req, res) {
 
   try {
     const response = await fetch(
-      `https://api.convertkit.com/v3/forms/${process.env.KIT_FORM_ID}/subscribe`,
+      `https://api.kit.com/v4/forms/${process.env.KIT_FORM_ID}/subscribers`,
       {
         method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          api_key: process.env.KIT_API_KEY,
-          email: email,
-        }),
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': `Bearer ${process.env.KIT_API_KEY}`,
+        },
+        body: JSON.stringify({ email_address: email }),
       }
     );
 
