@@ -24,13 +24,10 @@ export default async function handler(req, res) {
 
     const data = await response.json();
 
-    if (!response.ok) {
-      return res.status(400).json({ error: data.message || 'Subscription failed' });
-    }
-
-    return res.status(200).json({ success: true });
+    // Return the full Kit response so we can see what's wrong
+    return res.status(response.status).json(data);
 
   } catch (err) {
-    return res.status(500).json({ error: 'Server error' });
+    return res.status(500).json({ error: err.message });
   }
 }
