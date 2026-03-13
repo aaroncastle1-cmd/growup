@@ -3,16 +3,11 @@ export default async function handler(req, res) {
 
   try {
     const response = await fetch(
-      `https://api.kit.com/v4/forms/${process.env.KIT_FORM_ID}`,
-      {
-        headers: {
-          'X-Kit-Api-Key': process.env.KIT_API_KEY,
-        },
-      }
+      `https://api.convertkit.com/v3/forms/${process.env.KIT_FORM_ID}/subscriptions?api_secret=${process.env.KIT_API_SECRET}`,
     );
 
     const data = await response.json();
-    const count = data?.form?.total_subscribers ?? 0;
+    const count = data?.total_subscriptions ?? 0;
 
     return res.status(200).json({ count });
 
