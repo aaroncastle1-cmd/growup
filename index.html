@@ -4,10 +4,15 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Grow Up — Coming Soon</title>
-<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@300;400;700;900&family=Barlow:ital,wght@0,300;0,400;1,300&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@300;400;700;900&family=Barlow:ital,wght@0,300;0,400;1,300&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@300;400;700;900&family=Barlow:ital,wght@0,300;0,400;1,300&display=swap">
 <style>
 * { margin:0; padding:0; box-sizing:border-box; }
 :root { --ink:#151812; --linen:#EDE8DF; --acid:#C8E04A; --mid:#7A7870; --rule:rgba(21,24,18,0.1); }
+html { visibility:hidden; }
+html.fonts-loaded { visibility:visible; }
 html,body { background:var(--linen); font-family:'Barlow Condensed',sans-serif; color:var(--ink); overflow-x:hidden; }
 body::after { content:''; position:fixed; inset:0; background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E"); pointer-events:none; z-index:999; opacity:0.55; }
 
@@ -126,37 +131,13 @@ body::after { content:''; position:fixed; inset:0; background-image:url("data:im
 .pb-tag { font-size:12px; font-weight:700; letter-spacing:0.2em; text-transform:uppercase; color:rgba(21,24,18,0.4); margin-top:16px; font-family:'Barlow',sans-serif; display:flex; align-items:center; gap:8px; }
 .pb-tag::before { content:'→'; color:var(--ink); }
 
-/* ── PURPOSE — prominent ── */
-.purpose {
-  background:var(--ink);
-  padding:56px 52px;
-  display:grid;
-  grid-template-columns:auto 1fr;
-  gap:56px;
-  align-items:start;
-  border-bottom:3px solid var(--acid);
-}
-.purpose-label {
-  font-size:11px; font-weight:700;
-  letter-spacing:0.25em; text-transform:uppercase;
-  color:var(--acid); white-space:nowrap;
-  padding-top:6px;
-  border-top:1.5px solid rgba(200,224,74,0.3);
-  padding-top:14px;
-}
+/* ── PURPOSE ── */
+.purpose { background:var(--ink); padding:56px 52px; display:grid; grid-template-columns:auto 1fr; gap:56px; align-items:start; border-bottom:3px solid var(--acid); }
+.purpose-label { font-size:11px; font-weight:700; letter-spacing:0.25em; text-transform:uppercase; color:var(--acid); white-space:nowrap; border-top:1.5px solid rgba(200,224,74,0.3); padding-top:14px; }
 .purpose-inner { display:flex; flex-direction:column; gap:16px; }
-.purpose-headline {
-  font-size:clamp(32px,4vw,48px); font-weight:900;
-  text-transform:uppercase; letter-spacing:-0.03em; line-height:0.9;
-  color:var(--linen);
-}
+.purpose-headline { font-size:clamp(32px,4vw,48px); font-weight:900; text-transform:uppercase; letter-spacing:-0.03em; line-height:0.9; color:var(--linen); }
 .purpose-headline em { color:var(--acid); font-style:normal; }
-.purpose-copy {
-  font-family:'Barlow',sans-serif;
-  font-size:17px; font-weight:300; line-height:1.75;
-  color:rgba(255,255,255,0.55);
-  max-width:640px;
-}
+.purpose-copy { font-family:'Barlow',sans-serif; font-size:17px; font-weight:300; line-height:1.75; color:rgba(255,255,255,0.55); max-width:640px; }
 .purpose-copy em { font-style:normal; color:rgba(255,255,255,0.9); }
 
 /* ── FOOTER ── */
@@ -197,7 +178,6 @@ body::after { content:''; position:fixed; inset:0; background-image:url("data:im
   <div class="ticker-i">
     <span class="loud">Lift heavy. Call your mum.</span><span>Grass-fed WPI</span>
     <span class="loud">Do dropsets. Do the dishes.</span><span>Simple ingredients</span>
-    
     <span class="loud">Gym done. Life next.</span><span>Transparently sourced</span>
     <span class="loud">Muscles optional. Being decent isn't.</span><span>Fair price</span>
     <span class="loud">Train hard. Then help your mate move.</span><span>Locally sourced</span>
@@ -205,7 +185,6 @@ body::after { content:''; position:fixed; inset:0; background-image:url("data:im
     <span class="loud">Strong for life.</span><span>No influencer formulas</span>
     <span class="loud">Lift heavy. Call your mum.</span><span>Grass-fed WPI</span>
     <span class="loud">Do dropsets. Do the dishes.</span><span>Simple ingredients</span>
-    
     <span class="loud">Gym done. Life next.</span><span>Transparently sourced</span>
     <span class="loud">Muscles optional. Being decent isn't.</span><span>Fair price</span>
     <span class="loud">Train hard. Then help your mate move.</span><span>Locally sourced</span>
@@ -322,7 +301,16 @@ body::after { content:''; position:fixed; inset:0; background-image:url("data:im
 </div>
 
 <script>
-// Load real subscriber count on page load
+// Show page only once fonts are ready — eliminates the flash
+document.fonts.ready.then(function() {
+  document.documentElement.classList.add('fonts-loaded');
+});
+// Failsafe: show after 1s regardless, in case fonts.ready stalls on slow connections
+setTimeout(function() {
+  document.documentElement.classList.add('fonts-loaded');
+}, 1000);
+
+// Load real subscriber count
 (async function loadCount() {
   try {
     var res = await fetch('/api/count');
@@ -330,15 +318,11 @@ body::after { content:''; position:fixed; inset:0; background-image:url("data:im
     if (data.count && data.count > 0) {
       document.getElementById('counter').textContent = data.count;
     }
-  } catch(e) {
-    // Keep default display if fetch fails
-  }
+  } catch(e) {}
 })();
 
 async function handleSubmit() {
   var email = document.getElementById('email-input').value.trim();
-
-  // Basic validation
   if (!email || !email.includes('@') || !email.includes('.')) {
     var row = document.querySelector('.email-row');
     row.style.borderColor = 'rgba(255,80,80,0.6)';
@@ -346,39 +330,26 @@ async function handleSubmit() {
     document.getElementById('email-input').focus();
     return;
   }
-
-  // Disable button to prevent double submit
   var btn = document.querySelector('.email-btn');
   btn.textContent = '...';
   btn.disabled = true;
-
   try {
-    var res = await fetch('/api/subscribe', {
+    await fetch('/api/subscribe', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ email: email })
     });
-
-    // Show success regardless of Kit response (avoids exposing
-    // whether an email is already subscribed etc.)
-    document.getElementById('form-wrap').style.display = 'none';
-    document.getElementById('success').classList.add('show');
-
-    // Tick counter up by 1 from whatever the real count was
-    var el = document.getElementById('counter');
-    var current = parseInt(el.textContent, 10) || 247;
-    var target = current + 1;
-    var t = setInterval(function() {
-      current++;
-      el.textContent = current;
-      if (current >= target) clearInterval(t);
-    }, 80);
-
-  } catch(e) {
-    // Still show success — don't punish the user for a network blip
-    document.getElementById('form-wrap').style.display = 'none';
-    document.getElementById('success').classList.add('show');
-  }
+  } catch(e) {}
+  document.getElementById('form-wrap').style.display = 'none';
+  document.getElementById('success').classList.add('show');
+  var el = document.getElementById('counter');
+  var current = parseInt(el.textContent, 10) || 247;
+  var target = current + 1;
+  var t = setInterval(function() {
+    current++;
+    el.textContent = current;
+    if (current >= target) clearInterval(t);
+  }, 80);
 }
 
 document.getElementById('email-input').addEventListener('keydown', function(e) {
