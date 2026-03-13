@@ -43,7 +43,7 @@ body::after { content:''; position:fixed; inset:0; background-image:url("data:im
 .hl { position:relative; z-index:2; margin-top:20px; }
 .hl-grow { display:block; font-size:clamp(148px,17vw,188px); font-weight:900; text-transform:uppercase; letter-spacing:-0.045em; line-height:0.82; color:var(--ink); margin-right:-24px; overflow:hidden; white-space:nowrap; }
 .hl-up { display:block; font-size:clamp(185px,22vw,240px); font-weight:900; text-transform:uppercase; letter-spacing:-0.055em; line-height:0.76; color:var(--acid); margin-left:-5px; margin-right:-60px; overflow:hidden; white-space:nowrap; }
-.hl-period { color:var(--ink); font-size:0.88em; }
+.hl-period { color:var(--ink); font-size:0.88em; display:inline; white-space:nowrap; }
 
 /* Bottom copy */
 .bottom { position:relative; z-index:2; padding-top:32px; }
@@ -316,7 +316,7 @@ setTimeout(function() {
     var res = await fetch('/api/count');
     var data = await res.json();
     if (data.count && data.count > 0) {
-      document.getElementById('counter').textContent = data.count;
+      document.getElementById('counter').textContent = Math.max(data.count, 247);
     }
   } catch(e) {}
 })();
