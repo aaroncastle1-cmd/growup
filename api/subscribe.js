@@ -11,20 +11,18 @@ export default async function handler(req, res) {
 
   try {
     const response = await fetch(
-      `https://api.kit.com/v4/forms/${process.env.KIT_FORM_ID}/subscribers`,
+      `https://app.kit.com/forms/${process.env.KIT_FORM_ID}/subscriptions`,
       {
         method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-          'X-Kit-Api-Key': process.env.KIT_API_KEY,
-        },
-        body: JSON.stringify({ email_address: email }),
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          api_key: process.env.KIT_API_KEY,
+          email: email,
+        }),
       }
     );
 
     const data = await response.json();
-
-    // Return the full Kit response so we can see what's wrong
     return res.status(response.status).json(data);
 
   } catch (err) {
