@@ -441,6 +441,7 @@ async function handleMobileSubmit() {
   document.getElementById('mh-form-wrap').style.display = 'none';
   document.getElementById('mh-success').classList.add('show');
   fbq('track', 'Lead');
+  gtag('event', 'generate_lead');
   hideStickyIfDone();
   var el = document.getElementById('counter');
   if (el) {
@@ -482,6 +483,7 @@ async function handleSubmit() {
   document.getElementById('form-wrap').style.display = 'none';
   document.getElementById('success').classList.add('show');
   fbq('track', 'Lead');
+  gtag('event', 'generate_lead');
   var el = document.getElementById('counter');
   var current = parseInt(el.textContent, 10) || 247;
   var target = current + 1;
