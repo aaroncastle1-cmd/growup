@@ -43,7 +43,7 @@ body::after { content:''; position:fixed; inset:0; background-image:url("data:im
 .hl { position:relative; z-index:2; margin-top:20px; }
 .hl-grow { display:block; font-size:clamp(148px,17vw,188px); font-weight:900; text-transform:uppercase; letter-spacing:-0.02em; line-height:0.82; color:var(--ink); margin-right:-24px; overflow:hidden; white-space:nowrap; }
 .hl-up { display:block; font-size:clamp(185px,22vw,240px); font-weight:900; text-transform:uppercase; letter-spacing:-0.02em; line-height:0.76; color:var(--acid); margin-left:-5px; white-space:nowrap; }
-.hl-up::after { content:'.'; color:var(--ink); letter-spacing:0; }
+.hl-up::after { content:'.'; color:var(--ink); letter-spacing:normal; margin-left:-0.06em; }
 
 /* Bottom copy */
 .bottom { position:relative; z-index:2; padding-top:32px; }
@@ -58,7 +58,7 @@ body::after { content:''; position:fixed; inset:0; background-image:url("data:im
 .proof-text { font-size:13px; font-weight:700; letter-spacing:0.12em; text-transform:uppercase; color:var(--mid); }
 
 /* ── RIGHT — ink ── */
-.right { background:var(--ink); display:flex; flex-direction:column; justify-content:space-between; padding:56px 52px 52px; position:relative; overflow:hidden; animation:rise 0.5s ease 0.1s both; }
+.right { background:var(--ink); display:flex; flex-direction:column; justify-content:space-between; padding:40px 40px 40px; position:relative; overflow:hidden; animation:rise 0.5s ease 0.1s both; }
 .r-ghost { position:absolute; font-size:380px; font-weight:900; color:rgba(255,255,255,0.025); line-height:1; bottom:-40px; right:-30px; pointer-events:none; user-select:none; letter-spacing:-0.05em; }
 .r-vert { position:absolute; left:0; top:0; bottom:0; width:22px; display:flex; align-items:center; justify-content:center; writing-mode:vertical-rl; font-size:8px; font-weight:700; letter-spacing:0.25em; text-transform:uppercase; color:rgba(255,255,255,0.05); border-right:1px solid rgba(255,255,255,0.05); font-family:'Barlow',sans-serif; }
 .r-eyebrow { font-size:12px; letter-spacing:0.22em; text-transform:uppercase; color:rgba(255,255,255,0.2); font-weight:400; position:relative; z-index:2; padding-left:26px; }
@@ -121,24 +121,24 @@ body::after { content:''; position:fixed; inset:0; background-image:url("data:im
 .val-body em { font-style:normal; font-weight:600; color:var(--ink); }
 
 /* ── POSTER BAND ── */
-.poster-band { background:var(--acid); padding:44px 52px; display:flex; align-items:center; justify-content:space-between; border-bottom:1.5px solid var(--ink); position:relative; overflow:hidden; gap:48px; }
-.pb-ghost { position:absolute; font-size:280px; font-weight:900; text-transform:uppercase; color:rgba(21,24,18,0.05); line-height:1; top:-30px; right:-20px; letter-spacing:-0.06em; pointer-events:none; user-select:none; }
-.pb-copy { font-size:clamp(40px,5vw,64px); font-weight:900; text-transform:uppercase; color:var(--ink); line-height:0.85; letter-spacing:-0.04em; flex:1; position:relative; z-index:2; }
-.pb-copy .fade { opacity:0.2; }
-.pb-divider { width:1.5px; height:88px; background:rgba(21,24,18,0.15); flex-shrink:0; }
+.poster-band { background:var(--ink); padding:44px 52px; display:flex; align-items:center; justify-content:space-between; border-bottom:1.5px solid var(--acid); position:relative; overflow:hidden; gap:48px; }
+.pb-ghost { position:absolute; font-size:280px; font-weight:900; text-transform:uppercase; color:rgba(255,255,255,0.03); line-height:1; top:-30px; right:-20px; letter-spacing:-0.06em; pointer-events:none; user-select:none; }
+.pb-copy { font-size:clamp(40px,5vw,64px); font-weight:900; text-transform:uppercase; color:var(--linen); line-height:0.85; letter-spacing:-0.04em; flex:1; position:relative; z-index:2; }
+.pb-copy .fade { opacity:0.15; }
+.pb-divider { width:1.5px; height:88px; background:rgba(255,255,255,0.1); flex-shrink:0; }
 .pb-right { position:relative; z-index:2; flex-shrink:0; max-width:280px; }
-.pb-italic { font-family:'Barlow',sans-serif; font-style:italic; font-size:18px; font-weight:300; color:rgba(21,24,18,0.6); line-height:1.65; }
-.pb-tag { font-size:12px; font-weight:700; letter-spacing:0.2em; text-transform:uppercase; color:rgba(21,24,18,0.4); margin-top:16px; font-family:'Barlow',sans-serif; display:flex; align-items:center; gap:8px; }
-.pb-tag::before { content:'→'; color:var(--ink); }
+.pb-italic { font-family:'Barlow',sans-serif; font-style:italic; font-size:18px; font-weight:300; color:rgba(255,255,255,0.4); line-height:1.65; }
+.pb-tag { font-size:12px; font-weight:700; letter-spacing:0.2em; text-transform:uppercase; color:rgba(255,255,255,0.2); margin-top:16px; font-family:'Barlow',sans-serif; display:flex; align-items:center; gap:8px; }
+.pb-tag::before { content:'→'; color:var(--acid); }
 
 /* ── PURPOSE ── */
-.purpose { background:var(--ink); padding:56px 52px; display:grid; grid-template-columns:auto 1fr; gap:56px; align-items:start; border-bottom:3px solid var(--acid); }
-.purpose-label { font-size:11px; font-weight:700; letter-spacing:0.25em; text-transform:uppercase; color:var(--acid); white-space:nowrap; border-top:1.5px solid rgba(200,224,74,0.3); padding-top:14px; }
+.purpose { background:var(--acid); padding:56px 52px; display:grid; grid-template-columns:auto 1fr; gap:56px; align-items:start; border-bottom:3px solid var(--ink); }
+.purpose-label { font-size:11px; font-weight:700; letter-spacing:0.25em; text-transform:uppercase; color:var(--ink); white-space:nowrap; border-top:1.5px solid rgba(21,24,18,0.3); padding-top:14px; }
 .purpose-inner { display:flex; flex-direction:column; gap:16px; }
-.purpose-headline { font-size:clamp(32px,4vw,48px); font-weight:900; text-transform:uppercase; letter-spacing:-0.03em; line-height:0.9; color:var(--linen); }
-.purpose-headline em { color:var(--acid); font-style:normal; }
-.purpose-copy { font-family:'Barlow',sans-serif; font-size:17px; font-weight:300; line-height:1.75; color:rgba(255,255,255,0.55); max-width:640px; }
-.purpose-copy em { font-style:normal; color:rgba(255,255,255,0.9); }
+.purpose-headline { font-size:clamp(32px,4vw,48px); font-weight:900; text-transform:uppercase; letter-spacing:-0.03em; line-height:0.9; color:var(--ink); }
+.purpose-headline em { color:rgba(21,24,18,0.35); font-style:normal; }
+.purpose-copy { font-family:'Barlow',sans-serif; font-size:17px; font-weight:300; line-height:1.75; color:rgba(21,24,18,0.6); max-width:640px; }
+.purpose-copy em { font-style:normal; color:var(--ink); }
 
 /* ── FOOTER ── */
 .footer { padding:20px 40px; display:flex; justify-content:space-between; align-items:center; border-top:1.5px solid var(--ink); }
@@ -148,10 +148,43 @@ body::after { content:''; position:fixed; inset:0; background-image:url("data:im
 
 @keyframes rise { from{opacity:0;transform:translateY(18px)} to{opacity:1;transform:translateY(0)} }
 
+/* ── MOBILE FORM HERO ── */
+.mobile-hero { display:none; background:var(--ink); padding:32px 24px 36px; border-bottom:1.5px solid var(--acid); }
+.mh-offer { display:inline-block; background:var(--acid); color:var(--ink); font-size:11px; font-weight:700; letter-spacing:0.2em; text-transform:uppercase; padding:5px 14px 6px; margin-bottom:20px; }
+.mh-head { font-size:36px; font-weight:900; text-transform:uppercase; letter-spacing:-0.02em; line-height:0.95; color:var(--linen); margin-bottom:8px; }
+.mh-head em { color:var(--acid); font-style:normal; }
+.mh-sub { font-family:'Barlow',sans-serif; font-size:14px; font-weight:300; color:rgba(255,255,255,0.4); margin-bottom:20px; line-height:1.6; }
+.mh-row { display:flex; border:1.5px solid rgba(255,255,255,0.15); background:rgba(255,255,255,0.04); }
+.mh-row:focus-within { border-color:var(--acid); }
+.mh-input { flex:1; background:transparent; border:none; outline:none; padding:14px 16px; font-family:'Barlow',sans-serif; font-size:14px; font-weight:300; color:var(--linen); }
+.mh-input::placeholder { color:rgba(255,255,255,0.25); }
+.mh-btn { background:var(--acid); border:none; padding:0 20px; font-family:'Barlow Condensed',sans-serif; font-size:12px; font-weight:700; letter-spacing:0.2em; text-transform:uppercase; color:var(--ink); cursor:pointer; white-space:nowrap; }
+.mh-fine { font-family:'Barlow',sans-serif; font-size:11px; font-weight:300; color:rgba(255,255,255,0.2); margin-top:10px; }
+.mh-success { display:none; border:1.5px solid var(--acid); padding:16px 18px; background:rgba(200,224,74,0.06); }
+.mh-success.show { display:block; }
+.mh-success-head { font-size:15px; font-weight:700; letter-spacing:0.08em; text-transform:uppercase; color:var(--acid); }
+.mh-success-body { font-family:'Barlow',sans-serif; font-size:12px; color:rgba(255,255,255,0.3); display:block; margin-top:4px; }
+
+/* ── STICKY CTA ── */
+.sticky-cta { display:none; position:fixed; bottom:0; left:0; right:0; z-index:100; background:var(--acid); border-top:1.5px solid var(--ink); padding:14px 24px; align-items:center; justify-content:space-between; gap:12px; }
+.sticky-cta-text { font-size:13px; font-weight:700; letter-spacing:0.06em; text-transform:uppercase; color:var(--ink); line-height:1.3; }
+.sticky-cta-text span { display:block; font-family:'Barlow',sans-serif; font-size:11px; font-weight:300; letter-spacing:0; text-transform:none; color:rgba(21,24,18,0.6); margin-top:1px; }
+.sticky-cta-btn { background:var(--ink); border:none; padding:11px 20px; font-family:'Barlow Condensed',sans-serif; font-size:12px; font-weight:700; letter-spacing:0.2em; text-transform:uppercase; color:var(--acid); cursor:pointer; white-space:nowrap; flex-shrink:0; }
+.sticky-cta.hidden { display:none !important; }
+
+/* ── BAGS + PROOF COMBINED ── */
+.bags-proof { display:flex; flex-direction:row; align-items:center; gap:0; position:relative; z-index:2; flex:1; padding:4px 0; }
+.bags-col { position:relative; display:flex; flex-direction:row; align-items:flex-end; justify-content:center; flex:1; min-height:240px; overflow:visible; padding-bottom:20px; }
+.proof-col { display:flex; flex-direction:column; justify-content:center; width:45%; flex-shrink:0; }
+.proof-col .proof-item { display:flex; align-items:flex-start; gap:10px; padding:10px 0; }
+.proof-col .proof-arrow { color:var(--acid); font-size:14px; font-weight:700; flex-shrink:0; padding-top:1px; }
+.proof-col .proof-text { font-size:13px; font-weight:700; letter-spacing:0.12em; text-transform:uppercase; color:rgba(238,234,226,0.55); line-height:1.4; }
+.offer-badge { display:inline-block; background:var(--acid); color:var(--ink); font-size:13px; font-weight:700; letter-spacing:0.15em; text-transform:uppercase; padding:6px 16px 7px; margin-bottom:14px; }
+
 @media(max-width:900px){
   .page{grid-template-columns:1fr}
   .left{border-right:none;border-bottom:1.5px solid var(--ink);padding:36px 24px 32px}
-  .right{padding:36px 24px 40px}
+  .right{padding:36px 24px 40px;padding-bottom:100px;}
   .hl-grow{font-size:100px}
   .hl-up{font-size:128px}
   .ghost{font-size:300px}
@@ -163,6 +196,14 @@ body::after { content:''; position:fixed; inset:0; background-image:url("data:im
   .poster-band{flex-direction:column;gap:24px;padding:36px 24px}
   .pb-divider{width:40px;height:1.5px}
   .r-vert{display:none}
+  .mobile-hero{display:block}
+  .sticky-cta{display:flex}
+  .form-area{display:none}
+  .right{padding:28px 24px 28px;padding-bottom:80px;}
+  .bags-proof{flex-direction:column;gap:16px;}
+  .proof-col{width:100%;border-right:none;padding-right:0;}
+  .bags-col{min-height:200px;justify-content:center;}
+  .r-eyebrow{padding-left:0;}
 }
 </style>
 <!-- Google tag (gtag.js) -->
@@ -171,7 +212,6 @@ body::after { content:''; position:fixed; inset:0; background-image:url("data:im
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
   gtag('js', new Date());
-
   gtag('config', 'G-HGWGPTZXRK');
 </script>
 <!-- Meta Pixel Code -->
@@ -221,6 +261,30 @@ src="https://www.facebook.com/tr?id=1467081378323655&ev=PageView&noscript=1"
   </div>
 </div>
 
+<!-- MOBILE HERO FORM — visible only on mobile, above the fold -->
+<div class="mobile-hero" id="mobile-hero-section">
+  <div class="mh-offer">20% off at launch</div>
+  <div class="mh-head">Be first.<br><em>Pay less.</em></div>
+  <div class="mh-sub">Launching soon. Leave your email and you'll hear first — plus a 20% discount for people paying attention before it was cool.</div>
+  <div id="mh-form-wrap">
+    <div class="mh-row">
+      <input class="mh-input" type="email" id="mh-email-input" placeholder="your@email.com" autocomplete="email">
+      <button class="mh-btn" onclick="handleMobileSubmit()">Let's Go</button>
+    </div>
+    <div class="mh-fine">No spam. One email when we launch. Unsubscribe anytime.</div>
+  </div>
+  <div class="mh-success" id="mh-success">
+    <div class="mh-success-head">Noted. You're in.</div>
+    <span class="mh-success-body">One email when we launch. Not seventeen. Just one.</span>
+  </div>
+</div>
+
+<!-- STICKY CTA BAR — mobile only -->
+<div class="sticky-cta" id="sticky-cta">
+  <div class="sticky-cta-text">Get 20% off at launch<span>Leave your email — takes 10 seconds</span></div>
+  <button class="sticky-cta-btn" onclick="scrollToForm()">Get the discount →</button>
+</div>
+
 <div class="page">
   <div class="left">
     <div class="ghost">G</div>
@@ -232,47 +296,49 @@ src="https://www.facebook.com/tr?id=1467081378323655&ev=PageView&noscript=1"
     <div class="bottom">
       <div class="dl-head">Strong for life.<br>Train because it keeps you <em>capable.</em></div>
       <div class="dl-body">Not just chasing a physique. Not chasing an identity. Showing up, doing the work, being useful to the people around you. Grow Up is protein for that person. Grass-fed whey, traceable ingredients, honestly made, fair price.</div>
-      <div class="proof">
-        <div class="proof-item"><span class="proof-arrow">→</span><span class="proof-text">Grass-fed WPI · locally sourced</span></div>
-        <div class="proof-item"><span class="proof-arrow">→</span><span class="proof-text">Traceable ingredients · No fillers</span></div>
-        <div class="proof-item"><span class="proof-arrow">→</span><span class="proof-text">Honestly made · Fair price</span></div>
-        <div class="proof-item"><span class="proof-arrow">→</span><span class="proof-text">Strong for life · Not just for now</span></div>
-      </div>
     </div>
   </div>
 
   <div class="right">
     <div class="r-ghost">UP</div>
     <div class="r-vert">WHEY PROTEIN ISOLATE · GRASS FED · NATURAL INGREDIENTS</div>
-    <div class="r-eyebrow">Starter Range — 2026</div>
 
-    <div class="bags">
-      <div class="bag" style="transform:rotate(-3deg);z-index:2;">
-        <div class="bag-foil"></div><div class="bag-seal"></div><div class="bag-gusset"></div>
-        <div class="bag-label">
-          <div class="bl-spec"><span class="bl-spec-l">WPI · 1KG</span><span class="bl-spec-r">→</span></div>
-          <span class="bl-grow">GROW</span><span class="bl-up">UP.</span>
-          <div class="bl-foot"><span class="bl-flav">Natural Chocolate</span><span class="bl-wt">1KG</span></div>
-        </div>
+    <div class="bags-proof">
+      <div class="proof-col">
+        <div class="proof-item"><span class="proof-arrow">→</span><span class="proof-text">Grass-fed WPI · locally sourced</span></div>
+        <div class="proof-item"><span class="proof-arrow">→</span><span class="proof-text">Traceable ingredients · No fillers</span></div>
+        <div class="proof-item"><span class="proof-arrow">→</span><span class="proof-text">Honestly made · Fair price</span></div>
+        <div class="proof-item"><span class="proof-arrow">→</span><span class="proof-text">Strong for life · Not just for now</span></div>
       </div>
-      <div class="bag" style="transform:rotate(5deg);opacity:0.65;z-index:1;position:absolute;right:32px;bottom:28px;">
-        <div class="bag-foil" style="background:linear-gradient(118deg,rgba(255,255,255,0) 0%,rgba(255,255,255,0.16) 16%,rgba(255,255,255,0) 21%,rgba(255,255,255,0) 100%),linear-gradient(95deg,#d0cfc8 0%,#e4e3dc 12%,#babab2 22%,#d8d7d0 34%,#c4c3bc 46%,#dcdbd4 58%,#b8b7b0 68%,#e0dfd8 80%,#c8c7c0 90%,#d4d3cc 100%);"></div>
-        <div class="bag-seal"></div><div class="bag-gusset"></div>
-        <div class="bag-label light">
-          <div class="bl-spec"><span class="bl-spec-l">WPI · 1KG</span><span class="bl-spec-r">→</span></div>
-          <span class="bl-grow">GROW</span><span class="bl-up">UP.</span>
-          <div class="bl-foot"><span class="bl-flav">Natural Vanilla</span><span class="bl-wt">1KG</span></div>
+      <div class="bags-col">
+        <div class="bag" style="transform:rotate(-2deg);z-index:2;position:relative;">
+          <div class="bag-foil"></div><div class="bag-seal"></div><div class="bag-gusset"></div>
+          <div class="bag-label">
+            <div style="font-family:'Barlow',sans-serif;font-size:6px;font-weight:600;letter-spacing:0.15em;text-transform:uppercase;color:rgba(238,234,226,0.25);margin-bottom:5px;white-space:nowrap;">Grass-fed WPI Protein</div>
+            <span class="bl-grow">GROW</span><span class="bl-up">UP.</span>
+            <div class="bl-foot"><span class="bl-flav">Natural Chocolate</span><span class="bl-wt">1KG</span></div>
+          </div>
+        </div>
+        <div class="bag" style="transform:rotate(3deg);z-index:1;position:absolute;right:calc(50% - 180px);bottom:-50px;">
+          <div class="bag-foil" style="background:linear-gradient(118deg,rgba(255,255,255,0) 0%,rgba(255,255,255,0.16) 16%,rgba(255,255,255,0) 21%,rgba(255,255,255,0) 100%),linear-gradient(95deg,#d0cfc8 0%,#e4e3dc 12%,#babab2 22%,#d8d7d0 34%,#c4c3bc 46%,#dcdbd4 58%,#b8b7b0 68%,#e0dfd8 80%,#c8c7c0 90%,#d4d3cc 100%);box-shadow:5px 5px 0 rgba(21,24,18,0.2),0 24px 56px rgba(0,0,0,0.25),inset 1px 0 2px rgba(255,255,255,0.5);"></div>
+          <div class="bag-seal"></div><div class="bag-gusset"></div>
+          <div class="bag-label light">
+            <div style="font-family:'Barlow',sans-serif;font-size:6px;font-weight:600;letter-spacing:0.15em;text-transform:uppercase;color:rgba(21,24,18,0.35);margin-bottom:5px;white-space:nowrap;">Grass-fed WPI Protein</div>
+            <span class="bl-grow">GROW</span><span class="bl-up">UP.</span>
+            <div class="bl-foot"><span class="bl-flav">Natural Vanilla</span><span class="bl-wt">1KG</span></div>
+          </div>
         </div>
       </div>
     </div>
 
     <div class="form-area">
-      <div class="form-head">Get in early.<br><em>We'll remember you.</em></div>
-      <div class="form-body">Launching soon. Leave your email and you'll hear first — plus a launch discount for people who were paying attention before it was cool. Which, honestly, is the whole point.</div>
+      <div class="offer-badge">20% off at launch</div>
+      <div class="form-head">Be first.<br><em>Pay less.</em></div>
+      <div class="form-body">Launching soon. Leave your email and you'll hear first — plus a 20% discount for people paying attention before it was cool.</div>
       <div id="form-wrap">
         <div class="email-row">
           <input class="email-input" type="email" id="email-input" placeholder="your@email.com" autocomplete="email">
-          <button class="email-btn" onclick="handleSubmit()">Notify Me</button>
+          <button class="email-btn" onclick="handleSubmit()">Let's Go</button>
         </div>
         <div class="form-fine">No spam. One email when we launch. Unsubscribe anytime.</div>
       </div>
@@ -306,21 +372,21 @@ src="https://www.facebook.com/tr?id=1467081378323655&ev=PageView&noscript=1"
   </div>
 </div>
 
-<div class="poster-band">
-  <div class="pb-ghost">G</div>
-  <div class="pb-copy">STRONG<br>GLUTES.<br><span class="fade">STRONG</span><br><span class="fade">CHARACTER.</span></div>
-  <div class="pb-divider"></div>
-  <div class="pb-right">
-    <div class="pb-italic">"Protein for people who want to be dangerous in the gym — and decent everywhere else."</div>
-    <div class="pb-tag">Grow Up — Strong for life</div>
-  </div>
-</div>
-
 <div class="purpose">
   <div class="purpose-label">Purpose</div>
   <div class="purpose-inner">
     <div class="purpose-headline">Strong for<br><em>the next generation.</em></div>
     <div class="purpose-copy">A portion of every sale funds programs connecting boys and young men with <em>coaches, mentors and positive male role models.</em> Grow Up supports youth mentorship through sport — because strong communities matter more than strong quads. (Though quads help.)</div>
+  </div>
+</div>
+
+<div class="poster-band">
+  <div class="pb-ghost">G</div>
+  <div class="pb-copy">STRONG<br>GLUTES.<br><span style="color:var(--acid);">STRONG</span><br><span style="color:var(--acid);">CHARACTER.</span></div>
+  <div class="pb-divider"></div>
+  <div class="pb-right">
+    <div class="pb-italic">"Protein for people who want to be dangerous in the gym — and decent everywhere else."</div>
+    <div class="pb-tag">Grow Up — Strong for life</div>
   </div>
 </div>
 
@@ -334,10 +400,54 @@ src="https://www.facebook.com/tr?id=1467081378323655&ev=PageView&noscript=1"
 document.fonts.ready.then(function() {
   document.documentElement.classList.add('fonts-loaded');
 });
-// Failsafe: show after 1s regardless, in case fonts.ready stalls on slow connections
 setTimeout(function() {
   document.documentElement.classList.add('fonts-loaded');
 }, 1000);
+
+// Scroll to mobile form / hide sticky once form is in view
+function scrollToForm() {
+  var target = document.getElementById('mobile-hero-section');
+  if (target) {
+    target.scrollIntoView({ behavior: 'smooth' });
+  }
+}
+
+// Hide sticky CTA once mobile form has been submitted
+function hideStickyIfDone() {
+  var sticky = document.getElementById('sticky-cta');
+  if (sticky) sticky.classList.add('hidden');
+}
+
+// Mobile form submit
+async function handleMobileSubmit() {
+  var email = document.getElementById('mh-email-input').value.trim();
+  if (!email || !email.includes('@') || !email.includes('.')) {
+    var row = document.querySelector('.mh-row');
+    row.style.borderColor = 'rgba(255,80,80,0.6)';
+    setTimeout(function() { row.style.borderColor = ''; }, 1200);
+    document.getElementById('mh-email-input').focus();
+    return;
+  }
+  var btn = document.querySelector('.mh-btn');
+  btn.textContent = '...';
+  btn.disabled = true;
+  try {
+    await fetch('/api/subscribe', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ email: email })
+    });
+  } catch(e) {}
+  document.getElementById('mh-form-wrap').style.display = 'none';
+  document.getElementById('mh-success').classList.add('show');
+  fbq('track', 'Lead');
+  hideStickyIfDone();
+  var el = document.getElementById('counter');
+  if (el) {
+    var current = parseInt(el.textContent, 10) || 247;
+    el.textContent = current + 1;
+  }
+}
 
 // Load real subscriber count
 (async function loadCount() {
